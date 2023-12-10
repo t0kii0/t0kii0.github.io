@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>TeLlevo App</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <div class="header-container">
+      <h1>TeLlevo App</h1>
+      <nav>
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="#">Descargas</a></li>
+          <li><a href="#">Contacto </a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h2>Haz llegado al lugar correcto</h2>
+      <p>Ahora solo queda un paso más</p>
+      <!--  mostrar el código QR -->
+      <div id="qr-code-section" style="display: none;">
+        <img id="qr" src="TeLlevo_App.png" alt="Código QR para descargar la app" style="width: 200px; height: 200px;">
+      </div>
+      <!-- Botón de descarga para dispositivos móviles -->
+      <a href="https://drive.google.com/uc?export=download&id=16SmGGbXu3vmaFRjTbm9W1kwOcUf3u92j" id="download-button" class="btn" style="display: none;">Descargar</a>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2023 TeLlevo App </p>
+  </footer>
+
+  <script>
+    // Función para verificar si el dispositivo es móvil
+    function esDispositivoMovil() {
+      return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    }
+
+    // Obtener referencias a los elementos
+    const qrCodeSection = document.getElementById('qr-code-section');
+    const qrCodeImg = document.getElementById('qr-code-img');
+    const downloadButton = document.getElementById('download-button');
+
+    // Verificar el tipo de dispositivo al cargar la página
+    window.onload = function() {
+      if (esDispositivoMovil()) {
+        // Si es un dispositivo móvil, mostrar el botón de descarga
+        downloadButton.style.display = 'block';
+      } else {
+        // Si es un PC, mostrar el código QR
+        qrCodeSection.style.display = 'block';
+        // Cambiar 'ruta_del_codigo_qr' por la ruta de tu código QR
+        qrCodeImg.src = 'Tellevo app web/TeLlevo_App.png';
+      }
+    };
+  </script>
+</body>
+</html>
